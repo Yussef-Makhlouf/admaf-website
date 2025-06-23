@@ -63,7 +63,7 @@ export function FestivalHighlight() {
           <div className="relative">
             <div className="aspect-[4/3] overflow-hidden rounded-lg shadow-xl">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="https://admaf.org/wp-content/uploads/2024/11/CH_6920-HDR-scaled.jpg"
                 alt="مهرجان أبوظبي"
                 width={800}
                 height={600}

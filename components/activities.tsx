@@ -8,14 +8,14 @@ const activitiesData = [
   {
     id: 1,
     title: "فعالية ثقافية",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://admaf.org/wp-content/uploads/2025/04/quincy.png",
     description: "فعالية ثقافية مميزة تجمع نخبة من المثقفين والفنانين",
     tag: "فعالية",
   },
   {
     id: 2,
     title: "معرض فني",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://admaf.org/wp-content/uploads/2025/05/Pic1.jpg",
     description: "معرض فني يضم أعمال فنية متميزة من مختلف أنحاء العالم",
     tag: "معرض",
   },
