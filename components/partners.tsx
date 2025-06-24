@@ -2,14 +2,14 @@ import Image from "next/image"
 
 // بيانات نموذجية للشركاء
 const partnersData = [
-  { id: 1, name: "شريك 1", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 2, name: "شريك 2", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 3, name: "شريك 3", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 4, name: "شريك 4", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 5, name: "شريك 5", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 6, name: "شريك 6", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 7, name: "شريك 7", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 8, name: "شريك 8", logo: "/placeholder.svg?height=80&width=120" },
+  { id: 1, name: "شريك 1", logo: "https://admaf.org/wp-content/uploads/2023/12/mubadla-logo.jpg" },
+  { id: 2, name: "شريك 2", logo: "https://admaf.org/wp-content/uploads/2024/06/G42-footer_logo.png" },
+  { id: 3, name: "شريك 3", logo: "https://admaf.org/wp-content/uploads/2024/03/GS-energy-logo.png" },
+  { id: 4, name: "شريك 4", logo: "https://admaf.org/wp-content/uploads/2023/12/total-energy-logo.png" },
+  { id: 5, name: "شريك 5", logo: "https://admaf.org/wp-content/uploads/2023/12/logo-dolphin.png" },
+  { id: 6, name: "شريك 6", logo: "https://admaf.org/wp-content/uploads/2023/12/gulf-capitals.jpg" },
+  { id: 7, name: "شريك 7", logo: "https://admaf.org/wp-content/uploads/2023/12/dolce.jpg" },
+  { id: 8, name: "شريك 8", logo: "https://admaf.org/wp-content/uploads/2023/12/logo-chopard.png" },
 ]
 
 export function Partners() {

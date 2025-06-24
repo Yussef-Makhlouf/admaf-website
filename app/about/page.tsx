@@ -17,7 +17,7 @@ export default function AboutPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8 items-center">
             <div className="order-2 md:order-1">
-              <Image src="/about-people.jpg" alt="صورة جماعية" width={400} height={300} className="rounded-lg shadow-lg w-full object-cover" />
+              <Image src="https://admaf.org/wp-content/uploads/2024/03/Leia-…i-at-Abu-Dhabi-Festival.-20-March-2023-scaled.jpg" alt="صورة جماعية" width={400} height={300} className="rounded-lg shadow-lg w-full object-cover" />
             </div>
             <div className="order-1 md:order-2 col-span-1 md:col-span-1 flex flex-col items-center justify-center">
               <p className="text-base text-gray-700 leading-loose text-justify">
@@ -25,7 +25,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="order-3 md:order-3">
-              <Image src="/about-violin.jpg" alt="عازفة كمان" width={400} height={300} className="rounded-lg shadow-lg w-full object-cover" />
+              <Image src="https://admaf.org/wp-content/uploads/2023/11/activity-detail.webp" alt="عازفة كمان" width={400} height={300} className="rounded-lg shadow-lg w-full object-cover" />
             </div>
           </div>
         </div>
@@ -55,10 +55,10 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold mb-6 font-amiri">المؤسس</h2>
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1 order-2 md:order-1">
-              <Image src="/about-founder.jpg" alt="المؤسس" width={350} height={350} className="rounded-lg shadow-md w-full object-cover" />
+              <Image src="https://admaf.org/wp-content/uploads/2024/06/Approved-1-scaled-e1719296551455.jpg" alt="المؤسس" width={350} height={350} className="rounded-lg shadow-md w-full object-cover" />
             </div>
             <div className="flex-1 order-1 md:order-2">
-              <h3 className="text-xl font-bold mb-2">سمو الشيخة فاطمة بنت مبارك</h3>
+              <h3 className="text-xl font-bold mb-2">سعادة هدى إبراهيم الخميس</h3>
               <p className="text-gray-700 leading-relaxed">
                 المؤسس الفخري لمركز أبو ظبي للفنون والثقافة، صاحبة الرؤية الملهمة والدعم المستمر لمسيرة المركز في خدمة الفنون والثقافة.
               </p>
@@ -174,8 +174,8 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold mb-6 font-amiri">الرؤية</h2>
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <Image src="/about-vision1.jpg" alt="الرؤية 1" width={350} height={250} className="rounded-lg shadow-md w-full object-cover mb-4" />
-              <Image src="/about-vision2.jpg" alt="الرؤية 2" width={350} height={250} className="rounded-lg shadow-md w-full object-cover" />
+              <Image src="https://admaf.org/wp-content/uploads/2024/03/1-scaled.jpg" alt="الرؤية 1" width={350} height={250} className="rounded-lg shadow-md w-full object-cover mb-4" />
+              <Image src="https://admaf.org/wp-content/uploads/2024/03/11-scaled.jpg" alt="الرؤية 2" width={350} height={250} className="rounded-lg shadow-md w-full object-cover" />
             </div>
             <div>
               <p className="text-gray-700 leading-relaxed mb-4">
@@ -203,7 +203,7 @@ export default function AboutPage() {
               <p className="text-gray-700">ضمان استدامة المركز وتطوير قدراته المؤسسية لمواكبة التغيرات.</p>
             </div>
             <div>
-              <Image src="/about-strategy.jpg" alt="الركائز الاستراتيجية" width={400} height={300} className="rounded-lg shadow-md w-full object-cover" />
+              <Image src="https://admaf.org/wp-content/uploads/2023/11/pillars.webp" alt="الركائز الاستراتيجية" width={400} height={300} className="rounded-lg shadow-md w-full object-cover" />
             </div>
           </div>
         </div>
