@@ -5,10 +5,22 @@ import Image from "next/image"
 export function Hero() {
   return (
     <section className="relative h-[85vh] w-full overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image src="/images/hero-bg.png" alt="مركز أبو ظبي للفنون والثقافة" fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-black/40" />
+             {/* Background Video */}
+  <div className="absolute inset-0">
+        <iframe 
+          src="https://player.vimeo.com/video/915542723?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&api=1&player_id=vvvvimeoVideo-1065138" 
+          className="absolute top-0 left-0 w-full h-full min-w-full min-h-full object-cover"
+          style={{
+            width: '100vw',
+            height: '100vh',
+            transform: 'scale(1.2)',
+            transformOrigin: 'center center'
+          }}
+          allowFullScreen
+          frameBorder="0"
+          allow="autoplay; fullscreen"
+        />
+        <div className="absolute inset-0 bg-black/40 z-10" />
       </div>
 
       {/* Content */}
