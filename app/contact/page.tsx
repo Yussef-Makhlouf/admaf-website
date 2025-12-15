@@ -23,21 +23,21 @@ export default function ContactPage() {
               <MapPin className="w-6 h-6" />
             </div>
             <h3 className="font-display text-xl mb-2">Visit Us</h3>
-            <p className="text-gray-500 text-sm">Abu Dhabi Music & Arts Foundation <br /> P.O. Box 12345, Abu Dhabi, UAE</p>
+            <p className="text-gray-500 text-sm">Abu Dhabi Music & Arts Foundation – ADMAF <br /> 3rd Floor, Makeen Tower (AjmanBank Building), Tourist Club Area</p>
           </div>
           <div className="p-12 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col items-center text-center hover:bg-gray-50 transition-colors">
             <div className="w-12 h-12 bg-admaf-red/5 flex items-center justify-center rounded-full mb-6 text-admaf-red">
               <Phone className="w-6 h-6" />
             </div>
             <h3 className="font-display text-xl mb-2">Call Us</h3>
-            <p className="text-gray-500 text-sm opacity-80">+971 2 333 9999 <br /> +971 2 333 8888</p>
+            <a href="tel:+97123336400" className="text-gray-500 text-sm opacity-80">+971 (0)2 333 6400</a>
           </div>
           <div className="p-12 flex flex-col items-center text-center hover:bg-gray-50 transition-colors">
             <div className="w-12 h-12 bg-admaf-red/5 flex items-center justify-center rounded-full mb-6 text-admaf-red">
               <Mail className="w-6 h-6" />
             </div>
             <h3 className="font-display text-xl mb-2">Email Us</h3>
-            <p className="text-gray-500 text-sm">info@admaf.org <br /> press@admaf.org</p>
+            <a href="mailto:info@admaf.org" className="text-gray-500 text-sm">info@admaf.org</a>
           </div>
         </div>
       </section>
