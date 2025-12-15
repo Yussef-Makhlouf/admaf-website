@@ -1,121 +1,77 @@
-import Image from "next/image"
-import Link from "next/link"
+"use client"
+
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Calendar, MapPin, Users, Filter } from "lucide-react"
-import { activitiesData } from "./data"
+import { Search, Filter } from "lucide-react"
 
 export default function ActivitiesPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-admaf-cream to-white">
-        <div className="container">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-admaf-charcoal mb-6 font-amiri">الأنشطة</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              تصفح الفعاليات والأنشطة الثقافية والفنية التي ينظمها مركز أبو ظبي للفنون والثقافة
-            </p>
+    <div className="bg-white min-h-screen pt-20">
+      <section className="bg-admaf-gray py-20 border-b border-admaf-red/10">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-display text-admaf-red mb-6">Year-Round Activities</h1>
+          <p className="text-admaf-black/60 max-w-2xl mx-auto mb-10">
+            Engaging the community through workshops, talks, and performances throughout the year.
+          </p>
+
+          {/* Strict Search Bar */}
+          <div className="max-w-xl mx-auto flex">
+            <div className="flex-1 relative">
+              <input
+                type="text"
+                placeholder="Search activities..."
+                className="w-full h-12 pl-4 pr-10 bg-white border border-r-0 border-gray-200 outline-none focus:border-admaf-red rounded-none transition-colors"
+              />
+              <Search className="absolute right-3 top-3.5 w-5 h-5 text-gray-400" />
+            </div>
+            <Button className="rounded-none bg-admaf-red text-white h-12 px-6">
+              <Filter className="w-4 h-4 mr-2" /> Filter
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Filters and Content */}
-      <section className="py-8">
-        <div className="container">
-          <Tabs defaultValue="all" className="mb-8">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-              <TabsList className="grid grid-cols-2 md:grid-cols-6 w-full md:w-auto">
-                <TabsTrigger value="all">الكل</TabsTrigger>
-                <TabsTrigger value="conferences">مؤتمرات</TabsTrigger>
-                <TabsTrigger value="exhibitions">معارض</TabsTrigger>
-                <TabsTrigger value="workshops">ورش عمل</TabsTrigger>
-                <TabsTrigger value="seminars">ندوات</TabsTrigger>
-                <TabsTrigger value="festivals">مهرجانات</TabsTrigger>
-              </TabsList>
+      <section className="py-20 container mx-auto px-4">
+        {/* Tab-like Filters (Strict Text) */}
+        <div className="flex justify-center gap-8 mb-16 border-b border-gray-100 pb-4">
+          {['All', 'Conferences', 'Workshops', 'Performances', 'Talks'].map((tab, i) => (
+            <button
+              key={i}
+              className={`text-sm uppercase tracking-widest font-bold pb-4 border-b-2 transition-colors ${i === 0 ? 'text-admaf-red border-admaf-red' : 'text-gray-400 border-transparent hover:text-admaf-red'}`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
 
-              <Button variant="outline" className="gap-2">
-                <Filter className="h-4 w-4" />
-                تصفية متقدمة
-              </Button>
+        {/* Activity List */}
+        <div className="space-y-4">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <div key={i} className="group flex flex-col md:flex-row border border-gray-100 hover:border-admaf-red hover:bg-red-50/10 transition-colors duration-300 p-6">
+              <div className="md:w-32 flex flex-col justify-center border-r border-gray-100 pr-6 mr-6 text-center md:text-right">
+                <span className="text-3xl font-display text-admaf-red">1{i}</span>
+                <span className="text-xs uppercase font-bold text-gray-400">Dec 2025</span>
+              </div>
+              <div className="flex-1 py-2">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="bg-admaf-red text-white text-[10px] uppercase font-bold px-2 py-1">Workshop</span>
+                  <span className="text-xs text-gray-400 uppercase tracking-wider">Manarat Al Saadiyat</span>
+                </div>
+                <h3 className="text-xl font-display text-admaf-black group-hover:text-admaf-red transition-colors mb-2">
+                  Arabic Calligraphy Masterclass
+                </h3>
+                <p className="text-sm text-gray-500 line-clamp-1">
+                  Join master calligrapher Mohammed Mandi throughout a 3-day intensive workshop exploring the Thuluth script.
+                </p>
+              </div>
+              <div className="flex items-center mt-4 md:mt-0">
+                <Button variant="outline" className="w-full md:w-auto rounded-none border-gray-200 text-admaf-black hover:border-admaf-red hover:text-admaf-red">
+                  Register
+                </Button>
+              </div>
             </div>
-
-            <TabsContent value="all" className="mt-6">
-              <ActivityGrid activities={activitiesData} />
-            </TabsContent>
-
-            <TabsContent value="conferences" className="mt-6">
-              <ActivityGrid activities={activitiesData.filter((a) => a.category === "مؤتمرات")} />
-            </TabsContent>
-
-            <TabsContent value="exhibitions" className="mt-6">
-              <ActivityGrid activities={activitiesData.filter((a) => a.category === "معارض")} />
-            </TabsContent>
-
-            <TabsContent value="workshops" className="mt-6">
-              <ActivityGrid activities={activitiesData.filter((a) => a.category === "ورش عمل")} />
-            </TabsContent>
-
-            <TabsContent value="seminars" className="mt-6">
-              <ActivityGrid activities={activitiesData.filter((a) => a.category === "ندوات")} />
-            </TabsContent>
-
-            <TabsContent value="festivals" className="mt-6">
-              <ActivityGrid activities={activitiesData.filter((a) => a.category === "مهرجانات")} />
-            </TabsContent>
-          </Tabs>
+          ))}
         </div>
       </section>
-    </div>
-  )
-}
-
-function ActivityGrid({ activities }: { activities: typeof activitiesData }) {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {activities.map((activity) => (
-        <Link href={`/activities/${activity.id}`} key={activity.id}>
-          <Card className="overflow-hidden hover:shadow-lg transition-shadow group h-full">
-            <div className="relative">
-              <Image
-                src={activity.image || "/placeholder.svg"}
-                alt={activity.title}
-                width={400}
-                height={300}
-                className="h-48 w-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute top-4 right-4 flex gap-2">
-                <span className="bg-admaf-burgundy text-white px-3 py-1 rounded-full text-xs font-medium">
-                  {activity.category}
-                </span>
-                <span className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-medium">
-                  {activity.status}
-                </span>
-              </div>
-            </div>
-            <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-admaf-charcoal mb-3 line-clamp-2">{activity.title}</h3>
-              <p className="text-gray-600 mb-4 line-clamp-3 text-sm">{activity.description}</p>
-              <div className="space-y-2 mb-4">
-                <div className="flex items-center text-sm text-gray-500">
-                  <Calendar className="h-4 w-4 ml-2 text-admaf-burgundy" />
-                  {activity.date}
-                </div>
-                <div className="flex items-center text-sm text-gray-500">
-                  <MapPin className="h-4 w-4 ml-2 text-admaf-burgundy" />
-                  {activity.location}
-                </div>
-                <div className="flex items-center text-sm text-gray-500">
-                  <Users className="h-4 w-4 ml-2 text-admaf-burgundy" />
-                  {activity.attendees}
-                </div>
-              </div>
-              <Button className="w-full bg-admaf-burgundy hover:bg-admaf-burgundy/90">التفاصيل والتسجيل</Button>
-            </CardContent>
-          </Card>
-        </Link>
-      ))}
     </div>
   )
 }

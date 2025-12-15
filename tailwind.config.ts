@@ -23,47 +23,52 @@ const config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background: "white",
+        foreground: "#b41d38",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#b41d38",
+          foreground: "white",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "white",
+          foreground: "#b41d38",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "#b41d38",
+          foreground: "white",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "#f8f8f8",
+          foreground: "#b41d38",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "#b41d38",
+          foreground: "white",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "white",
+          foreground: "#b41d38",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "white",
+          foreground: "#b41d38",
         },
         admaf: {
-          burgundy: "#8B1538",
-          gold: "#D4AF37",
-          cream: "#F8F6F0",
-          charcoal: "#2C2C2C",
+          red: "#b41d38", // The ONLY primary color
+          white: "#ffffff", // The ONLY secondary color
+          black: "#1a1a1a", // Strict neutral for heavy text if needed
+          gray: "#f5f5f5", // Subtle backgrounds
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "0",    // Sharp edges for more premium/institutional feel
+        md: "0",
+        sm: "0",
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", "sans-serif"],
+        arabic: ["var(--font-noto-naskh)", "serif"],
+        display: ["var(--font-amiri)", "serif"],
       },
       keyframes: {
         "accordion-down": {
@@ -75,14 +80,23 @@ const config = {
           to: { height: "0" },
         },
         "fade-in": {
-          from: { opacity: "0", transform: "translateY(20px)" },
+          from: { opacity: "0", transform: "translateY(10px)" }, // Reduced movement
           to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-5px)" }, // Subtle ease
+        },
+        "draw": {
+          to: { strokeDashoffset: "0" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.6s ease-out",
+        "fade-in": "fade-in 1s ease-out forwards",
+        "float": "float 8s ease-in-out infinite", // Slower
+        "draw": "draw 3s ease-out forwards",
       },
     },
   },

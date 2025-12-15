@@ -2,149 +2,126 @@
 
 import Link from "next/link"
 import { Search, Globe, Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { useState } from "react"
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
+import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname()
+
+  // Hook for detecting scroll to toggle solid background
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const navigationItems = [
-    { href: "/", label: "الصفحة الرئيسية" },
-    { href: "/about", label: "نبذة عنا" },
-    { href: "/festival", label: "مهرجان أبوظبي" },
-    { href: "/activities", label: "الأنشطة" },
-    { href: "/publications", label: "المنشورات" },
-    {
-      href: "/educational-programs",
-      label: "البرنامج التعليمي والمجتمعي",
-      submenu: [
-        { href: "/educational-programs/initiatives", label: "المبادرات" },
-        { href: "/educational-programs/awards", label: "جوائز مجموعة أبوظبي للثقافة والفنون" },
-        { href: "/educational-programs/grants", label: "المنح والدعم" },
-      ],
-    },
-    { href: "/partnerships", label: "الشراكات" },
-    { href: "/contact", label: "تواصل معنا" },
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/festival", label: "Festival" },
+    { href: "/activities", label: "Activities" },
+    { href: "/educational-programs", label: "Education" },
+    { href: "/publications", label: "Publications" },
+    { href: "/partnerships", label: "Partners" },
+    { href: "/contact", label: "Contact" },
   ]
 
+  // Helper for transparency state:
+  // Solid White if scrolled OR menu open OR not on home.
+  // Ideally keep transparent on all pages with hero headers if possible, 
+  // but for strict clarity, let's keep transparent only at top.
+  const isSolid = isScrolled || isMenuOpen || pathname !== "/"
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/90 shadow-sm">
-      {/* Top Bar */}
-      <div className="border-b border-gray-100">
-        <div className="container flex h-12 items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="text-gray-600 hover:text-admaf-burgundy">
-              <Search className="h-4 w-4" />
-            </Button>
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <Globe className="h-4 w-4" />
-              <span>عربي</span>
-              <span className="text-xs">|</span>
-              <span className="text-xs">EN</span>
-            </div>
+    <header
+      className={`fixed top-0 z-50 w-full transition-all duration-300 border-b ${isSolid
+        ? "bg-white border-admaf-red/10 py-4 shadow-sm"
+        : "bg-transparent border-transparent py-8"
+        }`}
+    >
+      <div className="container mx-auto px-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
+          <div className="relative h-12 w-auto">
+            <img
+              src={isSolid ? "/logos/main-logo.svg" : "/logos/white-logo.svg"}
+              alt="ADMAF Logo"
+              className="h-full w-auto object-contain transition-all duration-300"
+            />
           </div>
+        </Link>
 
-          <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-admaf-burgundy">ADMAF</span>
-            <div className="h-8 w-8 rounded-full bg-admaf-burgundy flex items-center justify-center">
-              <span className="text-white text-xs font-bold">أ</span>
-            </div>
-          </div>
+        {/* Desktop Navigation */}
+        <nav className="hidden xl:flex items-center gap-8">
+          {navigationItems.map((item) => {
+            const isActive = pathname === item.href
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-[11px] tracking-[0.15em] uppercase font-bold hover:text-admaf-red transition-colors duration-300 relative group py-2 ${isSolid
+                  ? (isActive ? "text-admaf-red" : "text-admaf-black")
+                  : "text-white hover:text-white"
+                  }`}
+              >
+                {item.label}
+                {/* Underline for Active/Hover */}
+                <span className={`absolute bottom-0 left-0 h-[2px] bg-current transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"
+                  }`} />
+              </Link>
+            )
+          })}
+        </nav>
+
+        {/* Right Actions */}
+        <div className="hidden md:flex items-center gap-6">
+          <button className={`transition-colors duration-300 ${isSolid ? "text-admaf-black hover:text-admaf-red" : "text-white"
+            }`}>
+            <Search className="w-5 h-5" />
+          </button>
+          <button className={`font-bold text-xs tracking-widest transition-colors duration-300 ${isSolid ? "text-admaf-black hover:text-admaf-red" : "text-white"
+            }`}>
+            AR
+          </button>
+          {/* Mobile Toggle (visible on smaller screens) */}
+          <button
+            className={`xl:hidden ${isSolid ? "text-admaf-red" : "text-white"}`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+
+        {/* Mobile Toggle (Mobile only) */}
+        <button
+          className={`md:hidden ${isSolid ? "text-admaf-red" : "text-white"}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </div>
 
-      {/* Main Navigation */}
-      <div className="container">
-        <div className="flex h-16 items-center justify-between">
-          {/* Mobile Menu Button */}
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
-
-          {/* Desktop Navigation */}
-          <NavigationMenu className="hidden md:flex">
-            <NavigationMenuList className="flex gap-1">
-              {navigationItems.map((item) => (
-                <NavigationMenuItem key={item.href}>
-                  {item.submenu ? (
-                    <>
-                      <NavigationMenuTrigger className="text-sm font-medium text-gray-700 hover:text-admaf-burgundy">
-                        {item.label}
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <div className="w-64 p-2">
-                          {item.submenu.map((subItem) => (
-                            <NavigationMenuLink key={subItem.href} asChild>
-                              <Link
-                                href={subItem.href}
-                                className="block px-3 py-2 text-sm text-gray-700 hover:text-admaf-burgundy hover:bg-gray-50 rounded-md"
-                              >
-                                {subItem.label}
-                              </Link>
-                            </NavigationMenuLink>
-                          ))}
-                        </div>
-                      </NavigationMenuContent>
-                    </>
-                  ) : (
-                    <NavigationMenuLink asChild>
-                      <Link
-                        href={item.href}
-                        className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-admaf-burgundy transition-colors"
-                      >
-                        {item.label}
-                      </Link>
-                    </NavigationMenuLink>
-                  )}
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="absolute top-full left-0 right-0 bg-white border-b shadow-lg md:hidden">
-              <div className="container py-4">
-                <nav className="flex flex-col gap-2">
-                  {navigationItems.map((item) => (
-                    <div key={item.href}>
-                      <Link
-                        href={item.href}
-                        className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-admaf-burgundy hover:bg-gray-50 rounded-md"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {item.label}
-                      </Link>
-                      {item.submenu && (
-                        <div className="mr-4 mt-1 space-y-1">
-                          {item.submenu.map((subItem) => (
-                            <Link
-                              key={subItem.href}
-                              href={subItem.href}
-                              className="block px-3 py-1 text-xs text-gray-600 hover:text-admaf-burgundy hover:bg-gray-50 rounded-md"
-                              onClick={() => setIsMenuOpen(false)}
-                            >
-                              {subItem.label}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </nav>
-              </div>
-            </div>
-          )}
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="absolute top-full left-0 w-full bg-admaf-red min-h-screen p-8 xl:hidden border-t border-white/20">
+          <nav className="flex flex-col gap-6">
+            {navigationItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-white text-3xl font-display hover:text-white/80 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
-      </div>
+      )}
     </header>
   )
 }

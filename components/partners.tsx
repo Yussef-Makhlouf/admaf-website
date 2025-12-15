@@ -1,40 +1,56 @@
+"use client"
 import Image from "next/image"
+import { motion } from "framer-motion"
 
 // بيانات نموذجية للشركاء
 const partnersData = [
-  { id: 1, name: "شريك 1", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 2, name: "شريك 2", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 3, name: "شريك 3", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 4, name: "شريك 4", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 5, name: "شريك 5", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 6, name: "شريك 6", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 7, name: "شريك 7", logo: "/placeholder.svg?height=80&width=120" },
-  { id: 8, name: "شريك 8", logo: "/placeholder.svg?height=80&width=120" },
+  { id: 1, name: "Mubadala", logo: "/partners/imgi_10_mubadla-logo.jpg" },
+  { id: 2, name: "G42", logo: "/partners/imgi_11_G42-footer_logo.png" },
+  { id: 3, name: "GS Energy", logo: "/partners/imgi_12_GS-energy-logo.png" },
+  { id: 4, name: "Total Energies", logo: "/partners/imgi_13_total-energy-logo.png" },
+  { id: 5, name: "Dolphin Energy", logo: "/partners/imgi_14_logo-dolphin.png" },
+  { id: 6, name: "Gulf Capital", logo: "/partners/imgi_15_gulf-capitals.jpg" },
+  { id: 7, name: "Dolce & Gabbana", logo: "/partners/imgi_16_dolce.jpg" },
+  { id: 8, name: "Chopard", logo: "/partners/imgi_17_logo-chopard.png" },
 ]
 
 export function Partners() {
   return (
-    <section className="border-t py-16">
-      <div className="container">
-        <div className="mb-10 flex items-center justify-between">
-          <h2 className="text-xl font-bold">الشركاء في الرؤية الثقافية</h2>
-          <div className="rounded-full bg-black p-2 text-white">
-            <span className="text-sm">المزيد</span>
-          </div>
+    <section className="py-20 bg-white border-t border-gray-100 overflow-hidden">
+      <div className="container mb-12 flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <div className="h-px w-12 bg-admaf-red" />
+          <h2 className="text-xl font-display tracking-widest uppercase text-admaf-charcoal">Strategic Partners</h2>
         </div>
+      </div>
 
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 md:grid-cols-8">
-          {partnersData.map((partner) => (
-            <div key={partner.id} className="flex items-center justify-center">
-              <Image
-                src={partner.logo || "/placeholder.svg"}
-                alt={partner.name}
-                width={120}
-                height={80}
-                className="h-12 w-auto object-contain grayscale transition-all hover:grayscale-0"
-              />
-            </div>
-          ))}
+      <div className="relative w-full">
+        {/* Gradients for fade effect */}
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+
+        <div className="flex overflow-hidden">
+          <motion.div
+            className="flex gap-20 items-center whitespace-nowrap py-10"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              duration: 30,
+              ease: "linear",
+              repeat: Infinity
+            }}
+          >
+            {/* Double the list for seamless loop */}
+            {[...partnersData, ...partnersData, ...partnersData].map((partner, index) => (
+              <div key={`${partner.id}-${index}`} className="relative w-[150px] h-[80px] grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                <Image
+                  src={partner.logo || "/placeholder.svg"}
+                  alt={partner.name}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

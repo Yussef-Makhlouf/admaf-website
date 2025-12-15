@@ -1,99 +1,106 @@
+"use client"
 import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Download, Eye, ArrowLeft } from "lucide-react"
+import { motion } from "framer-motion"
 
 const publications = [
   {
     id: 1,
-    title: "مجلة الإبداع العربي",
-    description: "مجلة فصلية تتناول أحدث التطورات في الفنون والثقافة العربية",
-    image: "/placeholder.svg?height=400&width=300",
-    type: "مجلة",
+    title: "The Art of Nation",
+    description: "Quarterly journal exploring the latest in Arab arts and culture.",
+    image: "/culuture/louvre-abu-dhabi-museum-interior-dome-architecture.jpg",
+    type: "Journal",
     year: "2025",
-    issue: "العدد 45",
   },
   {
     id: 2,
-    title: "تقرير مهرجان أبوظبي السنوي",
-    description: "تقرير شامل عن فعاليات وإنجازات مهرجان أبوظبي للعام الماضي",
-    image: "/placeholder.svg?height=400&width=300",
-    type: "تقرير",
+    title: "Annual Report 24",
+    description: "Comprehensive overview of festivals and achievements.",
+    image: "/culuture/abu-dhabi-cultural-festival-performance-orchestra-.jpg",
+    type: "Report",
     year: "2024",
-    issue: "التقرير السنوي",
   },
   {
     id: 3,
-    title: "كتاب الفن الإماراتي المعاصر",
-    description: "دراسة شاملة لتطور الفن الإماراتي في العقود الأخيرة",
-    image: "/placeholder.svg?height=400&width=300",
-    type: "كتاب",
+    title: "Emirati Art",
+    description: "A study on the evolution of contemporary art in the UAE.",
+    image: "/modern-art-gallery-with-minimalist-middle-eastern-.jpg",
+    type: "Book",
     year: "2024",
-    issue: "الطبعة الأولى",
   },
   {
     id: 4,
-    title: "دليل الفعاليات الثقافية",
-    description: "دليل شامل للفعاليات الثقافية والفنية في دولة الإمارات",
-    image: "/placeholder.svg?height=400&width=300",
-    type: "دليل",
+    title: "Cultural Guide",
+    description: "Essential guide to cultural events across the Emirates.",
+    image: "/qasr-al-hosn-fort-abu-dhabi-heritage-site.jpg",
+    type: "Guide",
     year: "2025",
-    issue: "الإصدار الجديد",
   },
 ]
 
 export function PublicationsShowcase() {
   return (
-    <section className="py-16 bg-admaf-cream">
+    <section className="py-24 bg-admaf-cream">
       <div className="container">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-admaf-charcoal mb-4 font-amiri">
-            إصدارات مجموعة أبوظبي للثقافة والفنون
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-display text-admaf-charcoal mb-4">
+            Publications
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            مكتبة رقمية شاملة من الكتب والمجلات والتقارير الثقافية والفنية
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto font-light">
+            Documenting the journey of culture and creativity.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {publications.map((publication) => (
-            <Card key={publication.id} className="overflow-hidden hover:shadow-lg transition-shadow group bg-white">
-              <div className="relative">
-                <div className="aspect-[3/4] bg-gray-100 flex items-center justify-center p-4">
-                  <Image
-                    src={publication.image || "/placeholder.svg"}
-                    alt={publication.title}
-                    width={300}
-                    height={400}
-                    className="h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="absolute top-3 right-3">
-                  <span className="bg-admaf-burgundy text-white px-2 py-1 rounded text-xs font-medium">
-                    {publication.type}
-                  </span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+          {publications.map((publication, index) => (
+            <motion.div
+              key={publication.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="group relative perspective-1000">
+                {/* Book Card */}
+                <motion.div
+                  className="relative z-10 bg-white shadow-xl aspect-[3/4] cursor-pointer transform-style-3d transition-transform duration-500 group-hover:rotate-y-12 group-hover:-translate-y-4"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {/* Spine Effect */}
+                  <div className="absolute top-0 left-0 w-2 h-full bg-admaf-red bg-opacity-30 z-20 rounded-r-full" />
+
+                  <div className="absolute inset-2 bg-gray-50 flex flex-col p-6 text-center border border-gray-100">
+                    {/* Cover Image Placeholder */}
+                    <div className="flex-1 relative mb-4 overflow-hidden bg-gray-200">
+                      <Image
+                        src={publication.image || "/placeholder.svg"}
+                        alt={publication.title}
+                        fill
+                        className="object-cover mix-blend-multiply opacity-90"
+                      />
+                    </div>
+                    <h3 className="font-display text-xl leading-tight mb-2">{publication.title}</h3>
+                    <span className="text-xs uppercase tracking-widest text-admaf-red">{publication.year}</span>
+                  </div>
+                </motion.div>
+
+                {/* Book Shadow */}
+                <div className="absolute bottom-0 left-4 right-4 h-4 bg-black/20 blur-xl transform translate-y-4 group-hover:translate-y-8 group-hover:opacity-40 transition-all duration-500" />
+
+                {/* Actions - Always Visible */}
+                <div className="flex justify-center gap-4 mt-8">
+                  <Button size="sm" variant="default" className="bg-admaf-red hover:text-white text-admaf-white rounded-full">
+                    <Download className="h-3 w-3 mr-2" /> PDF
+                  </Button>
+                  <Button size="sm" variant="outline" className="border-admaf-red hover:text-white hover:bg-admaf-red rounded-full">
+                    <Eye className="h-3 w-3" />
+                  </Button>
                 </div>
               </div>
-              <CardContent className="p-4">
-                <h3 className="font-bold text-admaf-charcoal mb-2 line-clamp-2 text-sm">{publication.title}</h3>
-                <p className="text-gray-600 text-xs mb-3 line-clamp-2">{publication.description}</p>
-                <div className="text-xs text-gray-500 mb-3">
-                  <div>{publication.year}</div>
-                  <div>{publication.issue}</div>
-                </div>
-                <div className="flex gap-2">
-                  <Button size="sm" variant="outline" className="flex-1 text-xs">
-                    <Eye className="h-3 w-3 ml-1" />
-                    عرض
-                  </Button>
-                  <Button size="sm" className="flex-1 bg-admaf-burgundy hover:bg-admaf-burgundy/90 text-xs">
-                    <Download className="h-3 w-3 ml-1" />
-                    تحميل
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            </motion.div>
           ))}
         </div>
 
@@ -102,11 +109,10 @@ export function PublicationsShowcase() {
             asChild
             size="lg"
             variant="outline"
-            className="border-admaf-burgundy text-admaf-burgundy hover:bg-admaf-burgundy hover:text-white"
+            className="border-admaf-red text-admaf-red hover:bg-admaf-red hover:text-white rounded-none px-10 h-14 uppercase tracking-widest text-xs font-bold transition-all"
           >
             <Link href="/publications">
-              عرض جميع الإصدارات
-              <ArrowLeft className="h-4 w-4 mr-2" />
+              View Digital Library
             </Link>
           </Button>
         </div>

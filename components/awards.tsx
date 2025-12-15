@@ -1,92 +1,161 @@
+"use client"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { Award, ArrowRight, Star, ChevronLeft, ChevronRight } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { IslamicStarPattern } from "@/components/islamic-patterns"
+import { useState } from "react"
 
-// بيانات نموذجية للجوائز
-const awardsData = {
-  main: {
+// Extended Awards Data
+const awardsData = [
+  {
     id: 1,
-    title: "جائزة ADMAF للفنون المعاصرة",
-    image: "/placeholder.svg?height=400&width=600",
-    description:
-      "جائزة سنوية تقدم للفنانين المتميزين في مجال الفنون المعاصرة، وتهدف إلى تشجيع الإبداع والابتكار في المشهد الفني العربي.",
+    title: "Creativity Award",
+    year: "2024",
+    recipient: "Fatima Al Hashimi",
+    description: "For outstanding innovation in contemporary Islamic art.",
+    image: "/culuture/abu-dhabi-cultural-heritage-museum-interior-archit.jpg"
   },
-  side: [
-    {
-      id: 2,
-      title: "جائزة الإبداع الشبابي",
-      image: "/placeholder.svg?height=200&width=300",
-      description: "جائزة مخصصة للمواهب الشابة",
-    },
-    {
-      id: 3,
-      title: "جائزة التراث الثقافي",
-      image: "/placeholder.svg?height=200&width=300",
-      description: "جائزة تكرم المشاريع التي تحافظ على التراث",
-    },
-  ],
-}
+  {
+    id: 2,
+    title: "Design Excellence",
+    year: "2023",
+    recipient: "Khalid Al Ameri",
+    description: "Recognizing exceptional architectural contributions.",
+    image: "/culuture/louvre-abu-dhabi-museum-interior-dome-architecture.jpg"
+  },
+  {
+    id: 3,
+    title: "Young Artist",
+    year: "2024",
+    recipient: "Sarah Al Qubaisi",
+    description: "Celebrating emerging talent in visual arts.",
+    image: "/modern-art-gallery-with-minimalist-middle-eastern-.jpg"
+  },
+  {
+    id: 4,
+    title: "Lifetime Achievement",
+    year: "2022",
+    recipient: "Dr. Ahmed Al Suwaidi",
+    description: "Honoring decades of service to UAE culture.",
+    image: "/qasr-al-hosn-fort-abu-dhabi-heritage-site.jpg"
+  }
+]
 
 export function Awards() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const nextAward = () => {
+    setActiveIndex((prev) => (prev + 1) % awardsData.length)
+  }
+
+  const prevAward = () => {
+    setActiveIndex((prev) => (prev - 1 + awardsData.length) % awardsData.length)
+  }
+
   return (
-    <section className="bg-gray-50 py-16">
-      <div className="container">
-        <div className="mb-10 flex items-center justify-between">
-          <h2 className="text-3xl font-bold">الجوائز</h2>
-          <div className="flex gap-2">
-            <Button variant="outline" size="icon">
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-            <Button variant="outline" size="icon">
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
+    <section className="py-24 bg-[#1A1A1A] text-white relative overflow-hidden">
+      {/* Background Decoration */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-5">
+        <IslamicStarPattern className="absolute -top-40 -left-40 w-[600px] h-[600px] text-white" />
+        <IslamicStarPattern className="absolute -bottom-40 -right-40 w-[600px] h-[600px] text-white" />
+      </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          <div className="md:col-span-2">
-            <Card className="overflow-hidden">
-              <div className="relative">
-                <Image
-                  src={awardsData.main.image || "/placeholder.svg"}
-                  alt={awardsData.main.title}
-                  width={600}
-                  height={400}
-                  className="h-80 w-full object-cover"
-                />
-                <div className="absolute bottom-2 right-2 rounded bg-red-600 px-2 py-1 text-xs font-bold text-white">
-                  جائزة
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Text Side */}
+          <div className="space-y-8">
+            <div className="flex items-center gap-4">
+              <div className="h-px w-12 bg-admaf-gold" />
+              <span className="text-admaf-gold tracking-widest uppercase text-sm font-bold">Excellence in Arts</span>
+            </div>
+
+            <h2 className="text-5xl lg:text-6xl font-display leading-tight">
+              Celebrating <br /> <span className="text-admaf-gold">Creative</span> Achievement
+            </h2>
+
+            <p className="text-lg text-white/80 font-light leading-relaxed max-w-md">
+              Recognizing the <span className="text-admaf-gold/80 italic">exceptional contributions</span> of artists, creators, and innovators who shape our cultural landscape.
+            </p>
+
+            {/* Interactive Award Selection */}
+            <div className="flex gap-4 pt-4 overflow-x-auto pb-4 no-scrollbar">
+              {awardsData.map((award, index) => (
+                <div
+                  key={award.id}
+                  onClick={() => setActiveIndex(index)}
+                  className={`min-w-[200px] p-6 border transition-all duration-300 cursor-pointer group relative overflow-hidden ${index === activeIndex
+                      ? "bg-white border-white scale-105"
+                      : "bg-white/5 border-white/10 hover:bg-white/10"
+                    }`}
+                >
+                  <div className={`absolute top-0 left-0 w-1 h-full transition-all duration-300 ${index === activeIndex ? "bg-admaf-red" : "bg-transparent group-hover:bg-admaf-gold"}`} />
+                  <Award className={`w-8 h-8 mb-4 transition-colors ${index === activeIndex ? "text-admaf-red" : "text-admaf-gold"}`} />
+                  <h3 className={`text-lg font-display mb-1 transition-colors ${index === activeIndex ? "text-admaf-black" : "text-white"}`}>
+                    {award.title}
+                  </h3>
+                  <span className={`text-sm transition-colors ${index === activeIndex ? "text-admaf-charcoal/70" : "text-white/50"}`}>
+                    {award.year} Recipient
+                  </span>
                 </div>
-              </div>
-              <CardContent className="p-6">
-                <h3 className="mb-2 text-xl font-bold">{awardsData.main.title}</h3>
-                <p className="text-gray-600">{awardsData.main.description}</p>
-                <Button className="mt-4" variant="outline">
-                  المزيد
-                </Button>
-              </CardContent>
-            </Card>
+              ))}
+            </div>
+
+            <div className="pt-4 flex gap-4">
+              <Button onClick={prevAward} variant="outline" size="icon" className="rounded-none border-white/20 hover:bg-admaf-gold hover:border-admaf-gold hover:text-white text-white bg-transparent">
+                <ChevronLeft className="w-4 h-4" />
+              </Button>
+              <Button onClick={nextAward} variant="outline" size="icon" className="rounded-none border-white/20 hover:bg-admaf-gold hover:border-admaf-gold hover:text-white text-white bg-transparent">
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+              <Button className="bg-admaf-gold text-admaf-black hover:bg-white transition-colors duration-300 rounded-none px-8 h-10 text-xs font-bold uppercase tracking-widest ml-auto">
+                View All Benefits
+              </Button>
+            </div>
           </div>
 
-          <div className="flex flex-col gap-6">
-            {awardsData.side.map((award) => (
-              <Card key={award.id} className="overflow-hidden">
-                <div className="relative">
-                  <Image
-                    src={award.image || "/placeholder.svg"}
-                    alt={award.title}
-                    width={300}
-                    height={200}
-                    className="h-40 w-full object-cover"
-                  />
+          {/* Image Side - Main Feature */}
+          <div className="relative h-[600px] w-full">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                className="absolute inset-0"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="relative w-full h-full border border-white/10 p-4">
+                  <div className="absolute top-0 right-0 w-32 h-32 border-t-2 border-r-2 border-admaf-gold -mt-2 -mr-2" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 border-b-2 border-l-2 border-admaf-gold -mb-2 -ml-2" />
+
+                  <div className="w-full h-full relative overflow-hidden">
+                    <Image
+                      src={awardsData[activeIndex].image}
+                      alt={awardsData[activeIndex].title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+
+                    <div className="absolute bottom-0 left-0 p-8 w-full">
+                      <div className="bg-admaf-red text-white text-xs font-bold uppercase tracking-widest px-3 py-1 inline-block mb-4">
+                        Winner {awardsData[activeIndex].year}
+                      </div>
+                      <h3 className="text-3xl font-display text-white mb-2">{awardsData[activeIndex].recipient}</h3>
+                      <p className="text-white/80">{awardsData[activeIndex].description}</p>
+                    </div>
+                  </div>
+
+                  {/* Floating Badge */}
+                  <div className="absolute -top-6 -left-6 bg-admaf-gold text-admaf-black p-4 w-32 h-32 flex flex-col items-center justify-center rounded-full shadow-xl z-20">
+                    <Star className="w-6 h-6 mb-1 text-admaf-red fill-current" />
+                    <div className="text-xl font-display font-bold">100+</div>
+                    <div className="text-[10px] uppercase tracking-wider font-bold opacity-80 text-center leading-tight">Awards<br />Given</div>
+                  </div>
                 </div>
-                <CardContent className="p-4">
-                  <h3 className="mb-2 font-bold">{award.title}</h3>
-                  <p className="text-sm text-gray-600">{award.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
