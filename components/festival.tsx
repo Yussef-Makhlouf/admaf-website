@@ -3,6 +3,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Calendar, MapPin } from "lucide-react"
+import { DecorativeDivider } from "./islamic-patterns"
 
 export function Festival() {
   return (
@@ -27,6 +28,8 @@ export function Festival() {
             <h2 className="text-5xl lg:text-7xl font-display font-bold text-admaf-charcoal leading-tight">
               Abu Dhabi Festival
             </h2>
+            <DecorativeDivider className="w-32 h-8 text-admaf-red mb-8 opacity-60" />
+            
 
             <div className="space-y-6 text-lg text-gray-600 font-light leading-relaxed">
               <p>

@@ -8,6 +8,7 @@ import { GeometricGrid } from "@/components/ui/geometric-patterns"
 import { DecorativeDivider } from "@/components/islamic-patterns"
 
 import { Festival } from "@/components/festival"
+import Image from "next/image"
 
 export default function FestivalPage() {
   return (
@@ -52,7 +53,8 @@ export default function FestivalPage() {
               <div key={i} className="group cursor-pointer">
                 <div className="aspect-video bg-gray-100 relative overflow-hidden mb-6 border border-gray-100 group-hover:border-admaf-red transition-all">
                   <GeometricGrid className="absolute inset-0 opacity-20 text-admaf-red" />
-                  <div className="absolute inset-0 bg-admaf-red/5 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {/* <div className="absolute inset-0 bg-admaf-red/5 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity" /> */}
+                  <Image src="/grand-symphony-orchestra-performing-in-elegant-ven.jpg" alt="Grand Symphony Orchestra Performing in Elegant Venue" fill className="object-cover" />
                 </div>
                 <div>
                   <span className="text-xs font-bold tracking-widest text-admaf-red uppercase mb-2 block">World Premiere</span>

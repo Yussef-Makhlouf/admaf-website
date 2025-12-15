@@ -1,18 +1,17 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { PageHero } from "@/components/section/page-hero"
 
 export default function PublicationsPage() {
   return (
-    <div className="bg-white min-h-screen pt-20">
-      <section className="py-20 bg-admaf-red text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-display mb-4">Publications</h1>
-          <p className="max-w-xl mx-auto opacity-80 font-light">
-            Documenting the cultural history and artistic achievements of the UAE.
-          </p>
-        </div>
-      </section>
+    <div className="bg-white min-h-screen">
+      <PageHero
+        title="Publications"
+        subtitle="Our Library"
+        description="Documenting the cultural history and artistic achievements of the UAE."
+        image={"/intimate-literary-event-space-with-arabic-calligra.jpg"}
+      />
 
       <section className="py-24 container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
