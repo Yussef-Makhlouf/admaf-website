@@ -198,10 +198,8 @@ export function HeroPattern({ className = "" }: { className?: string }) {
                 {/* 12-pointed star */}
                 {[...Array(12)].map((_, i) => {
                     const angle = (i * 30 * Math.PI) / 180
-                    const x1 = 100 + 90 * Math.cos(angle)
-                    const y1 = 100 + 90 * Math.sin(angle)
-                    const x2 = 100 + 45 * Math.cos(angle + (15 * Math.PI) / 180)
-                    const y2 = 100 + 45 * Math.sin(angle + (15 * Math.PI) / 180)
+                    const x1 = (100 + 90 * Math.cos(angle)).toFixed(2)
+                    const y1 = (100 + 90 * Math.sin(angle)).toFixed(2)
                     return <line key={i} x1={x1} y1={y1} x2="100" y2="100" />
                 })}
                 {/* Center decoration */}

@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { OrnamentalDivider } from "@/components/islamic-patterns"
+import { ArabicCalligraphyStroke } from "./ui/calligraphy-strokes"
 
 // بيانات الأنشطة حسب التصميم المطلوب
 const activitiesData = [
@@ -65,7 +66,9 @@ export function Activities() {
           <div className="relative">
             <h2 className="text-5xl font-display text-admaf-charcoal mb-4">Activities</h2>
             <OrnamentalDivider className="w-64 h-6 opacity-50" />
+             <ArabicCalligraphyStroke className="absolute -top-20 -right-20 w-[500px] text-admaf-red opacity-50" />
           </div>
+                       
 
           <div className="flex gap-4">
             <Button variant="outline" size="icon" onClick={() => scroll('left')} className="rounded-full hover:bg-admaf-red hover:text-white hover:border-admaf-red transition-all">

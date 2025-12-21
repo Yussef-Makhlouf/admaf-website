@@ -137,12 +137,8 @@ export function Awards() {
                     </div>
                   </div>
 
-                  {/* Floating Badge */}
-                  <div className="absolute -top-6 -left-6 bg-admaf-gold text-admaf-black p-4 w-32 h-32 flex flex-col items-center justify-center rounded-full shadow-xl z-20">
-                    <Star className="w-6 h-6 mb-1 text-admaf-red fill-current" />
-                    <div className="text-xl font-display font-bold">100+</div>
-                    <div className="text-[10px] uppercase tracking-wider font-bold opacity-80 text-center leading-tight">Awards<br />Given</div>
-                  </div>
+
+            
                 </div>
               </motion.div>
             </AnimatePresence>

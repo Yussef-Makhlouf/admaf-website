@@ -37,11 +37,15 @@ export function HeroCinematic() {
                 className="absolute inset-0 z-0"
                 style={{ y: y1 }}
             >
-                <div className="absolute inset-0 bg-black/40 z-10" /> {/* Overlay for text readability */}
-                <div
-                    className="absolute inset-0 bg-cover bg-center opacity-60"
-                    style={{ backgroundImage: "url('/elegant-concert-hall-with-warm-lighting-and-arabic.jpg')" }}
-                />
+                <div className="absolute inset-0 w-full h-full overflow-hidden">
+                    <iframe
+                        src="https://player.vimeo.com/video/915542723?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"
+                        className="absolute top-1/2 left-1/2 min-w-full min-h-full w-[177.77vh] h-[56.25vw] -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none"
+                        allow="autoplay; fullscreen; picture-in-picture"
+                        allowFullScreen
+                    />
+                </div>
+                <div className="absolute inset-0 bg-black/60 z-10" />
                 {/* Fallback to image, but code structure ready for <video> tag if asset available */}
             </motion.div>
 

@@ -178,13 +178,14 @@ export function Navbar() {
               href="https://abudhabifestival.ae"
               target="_blank"
               rel="noopener noreferrer"
-              className={`hidden lg:flex items-center gap-1 text-[11px] tracking-widest text-admaf-red uppercase font-bold transition-colors duration-300 ${isMenuOpen || !isSolid
-                ? "text-admaf-red hover:text-admaf-gold"
-                : "text-admaf-red hover:text-admaf-red"
+                   className={`hidden md:block px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all duration-300 ${isMenuOpen || !isSolid
+                ? "bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white hover:text-admaf-red"
+                : "bg-admaf-red text-white hover:bg-admaf-charcoal"
                 }`}
+            
             >
               Abu Dhabi Festival
-              <ExternalLink className="w-3 h-3 text-admaf-red" />
+              {/* <ExternalLink className="w-3 h-3 text-admaf-red" /> */}
             </Link>
 
             {/* Search Button */}
@@ -199,7 +200,7 @@ export function Navbar() {
             <Link
               href="/contact"
               className={`hidden md:block px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all duration-300 ${isMenuOpen || !isSolid
-                ? "bg-white/10 backdrop-blur-sm border border-white/30 text-[#36454F] hover:bg-white hover:text-admaf-red"
+                ? "bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white hover:text-admaf-red"
                 : "bg-admaf-red text-white hover:bg-admaf-charcoal"
                 }`}
             >
@@ -216,7 +217,7 @@ export function Navbar() {
               {isMenuOpen ? (
                 <X className="w-6 h-6 text-admaf-red" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-12 h-12 border rounded-full border-admaf-red p-2" />
               )}
             </button>
           </div>
