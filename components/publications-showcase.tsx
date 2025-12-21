@@ -6,38 +6,39 @@ import { Button } from "@/components/ui/button"
 import { Download, Eye, ArrowLeft } from "lucide-react"
 import { motion } from "framer-motion"
 
+// منشورات أدماف - حسب التصميم المطلوب
 const publications = [
   {
     id: 1,
-    title: "The Art of Nation",
-    description: "Quarterly journal exploring the latest in Arab arts and culture.",
+    title: "ADMAF Tribune – Abu Dhabi Festival 2024",
+    description: "The official magazine of Abu Dhabi Festival featuring highlights and exclusive interviews.",
     image: "/culuture/louvre-abu-dhabi-museum-interior-dome-architecture.jpg",
-    type: "Journal",
-    year: "2025",
-  },
-  {
-    id: 2,
-    title: "Annual Report 24",
-    description: "Comprehensive overview of festivals and achievements.",
-    image: "/culuture/abu-dhabi-cultural-festival-performance-orchestra-.jpg",
-    type: "Report",
+    type: "Magazine",
     year: "2024",
   },
   {
+    id: 2,
+    title: "ADMAF Yearbook 2023",
+    description: "Comprehensive overview of ADMAF's activities and achievements throughout 2023.",
+    image: "/culuture/abu-dhabi-cultural-festival-performance-orchestra-.jpg",
+    type: "Yearbook",
+    year: "2023",
+  },
+  {
     id: 3,
-    title: "Emirati Art",
-    description: "A study on the evolution of contemporary art in the UAE.",
+    title: "Portrait Of a Nation",
+    description: "A visual journey through the UAE's rich cultural heritage and artistic achievements.",
     image: "/modern-art-gallery-with-minimalist-middle-eastern-.jpg",
     type: "Book",
     year: "2024",
   },
   {
     id: 4,
-    title: "Cultural Guide",
-    description: "Essential guide to cultural events across the Emirates.",
+    title: "ADMAF Yearbook 2022",
+    description: "Annual report showcasing the foundation's impact on arts and culture.",
     image: "/qasr-al-hosn-fort-abu-dhabi-heritage-site.jpg",
-    type: "Guide",
-    year: "2025",
+    type: "Yearbook",
+    year: "2022",
   },
 ]
 
@@ -47,7 +48,7 @@ export function PublicationsShowcase() {
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-display text-admaf-charcoal mb-4">
-            Publications
+            ADMAF Publications
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto font-light">
             Documenting the journey of culture and creativity.
@@ -112,7 +113,7 @@ export function PublicationsShowcase() {
             className="border-admaf-red text-admaf-red hover:bg-admaf-red hover:text-white rounded-none px-10 h-14 uppercase tracking-widest text-xs font-bold transition-all"
           >
             <Link href="/publications">
-              View Digital Library
+              View More
             </Link>
           </Button>
         </div>

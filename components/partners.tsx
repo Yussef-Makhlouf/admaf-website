@@ -20,7 +20,7 @@ export function Partners() {
       <div className="container mb-12 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="h-px w-12 bg-admaf-red" />
-          <h2 className="text-xl font-display tracking-widest uppercase text-admaf-charcoal">Strategic Partners</h2>
+          <h2 className="text-xl font-display tracking-widest uppercase text-admaf-charcoal">Our Sponsors</h2>
         </div>
       </div>
 

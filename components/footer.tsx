@@ -42,7 +42,7 @@ export function Footer() {
             <div className="space-y-4 text-sm text-white/70">
               <div className="flex gap-4 items-start">
                 <MapPin className="h-5 w-5 shrink-0 text-admaf-gold/70" />
-                <span>PO Box 47488<br />Abu Dhabi, United Arab Emirates</span>
+                <span>Abu Dhabi Music & ArtsFoundation – ADMAF 3rd Floor, Makeen Tower (AjmanBank Building), Tourist Club Area</span>
               </div>
               <div className="flex gap-4 items-center">
                 <Phone className="h-5 w-5 shrink-0 text-admaf-gold/70" />

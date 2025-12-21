@@ -98,14 +98,7 @@ export function HeroCinematic() {
                         <Button
                             className="bg-admaf-red hover:bg-admaf-red/90 text-white min-w-[200px] h-14 text-sm tracking-widest uppercase font-bold rounded-none border border-admaf-red transition-all duration-500 hover:shadow-[0_0_30px_rgba(180,29,56,0.5)]"
                         >
-                            Explore Festival
-                        </Button>
-                        <Button
-                            variant="outline"
-                            className="bg-transparent border-white/30 text-white hover:bg-white hover:text-admaf-black min-w-[200px] h-14 text-sm tracking-widest uppercase font-bold rounded-none backdrop-blur-sm transition-all duration-500 group"
-                        >
-                            <Play className="w-4 h-4 mr-2 fill-current" />
-                            Watch Showreel
+                            Get In Touch
                         </Button>
                     </div>
                 </motion.div>
@@ -118,7 +111,8 @@ export function HeroCinematic() {
                 transition={{ delay: 1.5, duration: 1 }}
                 className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/60"
             >
-                <div className="w-[1px] h-24 bg-gradient-to-b from-transparent via-white/50 to-transparent relative overflow-hidden">
+                <span className="text-xs uppercase tracking-widest font-bold">Scroll To Discover</span>
+                <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-white/50 to-transparent relative overflow-hidden">
                     <motion.div
                         className="absolute top-0 left-0 w-full h-1/2 bg-white"
                         animate={{ top: ["-100%", "100%"] }}

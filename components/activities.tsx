@@ -7,47 +7,39 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { OrnamentalDivider } from "@/components/islamic-patterns"
 
-// بيانات نموذجية للأنشطة
+// بيانات الأنشطة حسب التصميم المطلوب
 const activitiesData = [
   {
     id: 1,
-    title: "Cultural Symposium",
+    title: "ADMAF TALKS: Panel Discussion – Sounds And Aesthetics: Arabic As A Source Of Inspiration",
     image: "/culuture/abu-dhabi-cultural-heritage-museum-interior-archit.jpg",
-    description: "Bringing together intellectuals and artists for deep dialogue.",
-    tag: "Symposium",
-    date: "Dec 15"
+    description: "An engaging panel discussion exploring the rich heritage of Arabic aesthetics and its influence on contemporary art and music.",
+    tag: "ADMAF TALKS",
+    date: "15-December-2025"
   },
   {
     id: 2,
-    title: "Art Exhibition",
+    title: "ADMAF Signs MoU With Bassam Freiha Art Foundation",
     image: "/culuture/arabic-calligraphy-art-exhibition.jpg",
-    description: "Showcasing masterpieces from around the Islamic world.",
-    tag: "Exhibition",
-    date: "Jan 20"
+    description: "A strategic partnership to promote and preserve Arab art heritage.",
+    tag: "MOUs",
+    date: "9-December-2025"
   },
   {
     id: 3,
-    title: "Heritage Workshop",
+    title: "ADMAF And Ministry Of Education Sign Landmark MoU",
     image: "/culuture/oud-player-performing-close-up-hands-on-strings.jpg",
-    description: "Learning traditional crafts from master artisans.",
-    tag: "Workshop",
-    date: "Feb 10"
+    description: "A landmark agreement to integrate arts education into the national curriculum.",
+    tag: "MOUs",
+    date: "3-December-2025"
   },
   {
     id: 4,
-    title: "Youth Creativity",
+    title: "H.E. Huda Alkhamis Life And Legacy, L Bahrain",
     image: "/culuture/diverse-musicians-playing-traditional-and-modern-i.jpg",
-    description: "Empowering the next generation of creative leaders.",
-    tag: "Youth",
-    date: "Mar 05"
-  },
-  {
-    id: 5,
-    title: "Gala Awards",
-    image: "/culuture/orchestra-concert-hall-performance-dramatic-lighti.jpg",
-    description: "Honoring excellence in the arts and culture sector.",
-    tag: "Ceremony",
-    date: "Apr 12"
+    description: "A special lecture celebrating the life and achievements of H.E. Huda Alkhamis.",
+    tag: "Bahrain Lecture",
+    date: "1-December-2025"
   },
 ]
 
@@ -71,7 +63,7 @@ export function Activities() {
         {/* Header */}
         <div className="mb-16 flex flex-col md:flex-row items-end justify-between gap-8">
           <div className="relative">
-            <h2 className="text-5xl font-display text-admaf-charcoal mb-4">Latest Activities</h2>
+            <h2 className="text-5xl font-display text-admaf-charcoal mb-4">Activities</h2>
             <OrnamentalDivider className="w-64 h-6 opacity-50" />
           </div>
 
@@ -100,7 +92,7 @@ export function Activities() {
 
         <div className="flex justify-center mt-8">
           <Button variant="link" className="text-admaf-red uppercase tracking-widest text-xs font-bold hover:text-admaf-charcoal">
-            View All Activities <ArrowRight className="ml-2 h-4 w-4" />
+            Read More <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
       </div>

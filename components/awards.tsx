@@ -6,40 +6,35 @@ import { motion, AnimatePresence } from "framer-motion"
 import { IslamicStarPattern } from "@/components/islamic-patterns"
 import { useState } from "react"
 
-// Extended Awards Data
+// Extended Awards Data - حسب التصميم المطلوب
 const awardsData = [
   {
     id: 1,
-    title: "Creativity Award",
+    title: "Dolce&Gabbana x ADMAF Design Awards",
     year: "2024",
-    recipient: "Fatima Al Hashimi",
-    description: "For outstanding innovation in contemporary Islamic art.",
-    image: "/culuture/abu-dhabi-cultural-heritage-museum-interior-archit.jpg"
+    recipient: "Applications Open",
+    description: "The Dolce & Gabbana x ADMAF Design Awards recognize exceptional creativity in fashion and design innovation.",
+    image: "/culuture/abu-dhabi-cultural-heritage-museum-interior-archit.jpg",
+    deadline: "12-November-2024"
   },
   {
     id: 2,
-    title: "Design Excellence",
-    year: "2023",
-    recipient: "Khalid Al Ameri",
-    description: "Recognizing exceptional architectural contributions.",
-    image: "/culuture/louvre-abu-dhabi-museum-interior-dome-architecture.jpg"
+    title: "Total Energies Sustainability Design Award",
+    year: "2024",
+    recipient: "Applications Open",
+    description: "Recognizing sustainable design solutions that promote environmental responsibility.",
+    image: "/culuture/louvre-abu-dhabi-museum-interior-dome-architecture.jpg",
+    deadline: ""
   },
   {
     id: 3,
-    title: "Young Artist",
+    title: "Gulf Capital-ADMAF Visual Arts Award",
     year: "2024",
-    recipient: "Sarah Al Qubaisi",
-    description: "Celebrating emerging talent in visual arts.",
-    image: "/modern-art-gallery-with-minimalist-middle-eastern-.jpg"
+    recipient: "Applications Open",
+    description: "Celebrating excellence in visual arts and creative expression.",
+    image: "/modern-art-gallery-with-minimalist-middle-eastern-.jpg",
+    deadline: ""
   },
-  {
-    id: 4,
-    title: "Lifetime Achievement",
-    year: "2022",
-    recipient: "Dr. Ahmed Al Suwaidi",
-    description: "Honoring decades of service to UAE culture.",
-    image: "/qasr-al-hosn-fort-abu-dhabi-heritage-site.jpg"
-  }
 ]
 
 export function Awards() {
@@ -65,13 +60,8 @@ export function Awards() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text Side */}
           <div className="space-y-8">
-            <div className="flex items-center gap-4">
-              <div className="h-px w-12 bg-admaf-gold" />
-              <span className="text-admaf-gold tracking-widest uppercase text-sm font-bold">Excellence in Arts</span>
-            </div>
-
             <h2 className="text-5xl lg:text-6xl font-display leading-tight">
-              Celebrating <br /> <span className="text-admaf-gold">Creative</span> Achievement
+              Awards
             </h2>
 
             <p className="text-lg text-white/80 font-light leading-relaxed max-w-md">
@@ -85,8 +75,8 @@ export function Awards() {
                   key={award.id}
                   onClick={() => setActiveIndex(index)}
                   className={`min-w-[200px] p-6 border transition-all duration-300 cursor-pointer group relative overflow-hidden ${index === activeIndex
-                      ? "bg-white border-white scale-105"
-                      : "bg-white/5 border-white/10 hover:bg-white/10"
+                    ? "bg-white border-white scale-105"
+                    : "bg-white/5 border-white/10 hover:bg-white/10"
                     }`}
                 >
                   <div className={`absolute top-0 left-0 w-1 h-full transition-all duration-300 ${index === activeIndex ? "bg-admaf-red" : "bg-transparent group-hover:bg-admaf-gold"}`} />
@@ -108,8 +98,8 @@ export function Awards() {
               <Button onClick={nextAward} variant="outline" size="icon" className="rounded-none border-white/20 hover:bg-admaf-gold hover:border-admaf-gold hover:text-white text-white bg-transparent">
                 <ChevronRight className="w-4 h-4" />
               </Button>
-              <Button className="bg-admaf-gold text-admaf-black hover:bg-white transition-colors duration-300 rounded-none px-8 h-10 text-xs font-bold uppercase tracking-widest ml-auto">
-                View All Benefits
+              <Button className="bg-admaf-red text-white hover:bg-admaf-gold hover:text-admaf-black transition-colors duration-300 rounded-none px-8 h-10 text-xs font-bold uppercase tracking-widest ml-auto">
+                Apply Now
               </Button>
             </div>
           </div>
